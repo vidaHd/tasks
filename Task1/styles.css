@@ -78,6 +78,10 @@ h1 {
   background-color: #eef2f7;
 }
 
+.employee-table th[data-sortable="true"] {
+  cursor: pointer;
+}
+
 /* TODO: set required widths:
    Name 28%, Department 22%, Role 28%, Start Date 12%, Monthly Fee 10%
 */

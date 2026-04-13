@@ -60,6 +60,24 @@ function sortBy(key, type) {
   // - Clicking a new key sets direction to asc.
   // - Sorting must be stable.
   // - Re-render table and update header indicators.
+
+  // toggle direction
+  if (state.activeKey === key) {
+    state.direction = state.direction === "asc" ? "desc" : "asc";
+  } else {
+    state.activeKey = key;
+    state.direction = "asc";
+  }
+
+  const data = [...rows];
+
+  data.sort((a, b) => {
+    const result = compareValues(a[key], b[key], type);
+    return state.direction === "asc" ? result : -result;
+  });
+
+  setHeaderIndicators();
+  render(data);
 }
 
 headers.forEach((th) => {
