@@ -82,6 +82,11 @@ h1 {
   cursor: pointer;
 }
 
+.employee-table th:last-child, 
+.employee-table td:last-child {
+  text-align: right;
+}
+
 /* TODO: set required widths:
    Name 28%, Department 22%, Role 28%, Start Date 12%, Monthly Fee 10%
 */
