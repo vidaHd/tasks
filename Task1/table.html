@@ -12,9 +12,19 @@
       <p class="subtitle">
         Improve the styling and add sorting behavior for selected columns.
       </p>
-
+      
       <div class="table-shell">
         <table class="employee-table" id="employeeTable">
+          
+          <!-- specify columns widths -->
+          <colgroup>
+            <col style="width: 28%" />
+            <col style="width: 22%" />
+            <col style="width: 28%" />
+            <col style="width: 12%" />
+            <col style="width: 10%" />
+          </colgroup>
+
           <thead>
             <tr>
               <th data-key="name" data-type="string" data-sortable="true">Name</th>
