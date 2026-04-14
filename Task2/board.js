@@ -112,18 +112,18 @@ function setupDropzones() {
       tickets = tickets.map((ticket) =>
         ticket.id === draggedTicketId ? { ...ticket, status } : ticket,
       );
+
+      //save to localStorage and re-render UI after drop
+      saveTickets();
+      render();
+
+      // TODO:
+      // - prevent default on dragover
+      // - add/remove "drag-over" class for visual feedback
+      // - on drop: move dragged ticket to this status
+      // - persist to localStorage and re-render
+      void status;
     });
-
-    //save to localStorage and re-render UI after drop
-    saveTickets();
-    render();
-
-    // TODO:
-    // - prevent default on dragover
-    // - add/remove "drag-over" class for visual feedback
-    // - on drop: move dragged ticket to this status
-    // - persist to localStorage and re-render
-    void status;
   });
 }
 
