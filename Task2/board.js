@@ -1,10 +1,30 @@
 const STORAGE_KEY = "task6-ticket-board-v1";
 
 const defaultTickets = [
-  { id: "T-100", title: "Broken barrier in Zone B", priority: "high", status: "todo" },
-  { id: "T-101", title: "Refund request for duplicate charge", priority: "medium", status: "todo" },
-  { id: "T-102", title: "Camera stream lagging", priority: "high", status: "inprogress" },
-  { id: "T-103", title: "Update signage in entrance", priority: "low", status: "done" }
+  {
+    id: "T-100",
+    title: "Broken barrier in Zone B",
+    priority: "high",
+    status: "todo",
+  },
+  {
+    id: "T-101",
+    title: "Refund request for duplicate charge",
+    priority: "medium",
+    status: "todo",
+  },
+  {
+    id: "T-102",
+    title: "Camera stream lagging",
+    priority: "high",
+    status: "inprogress",
+  },
+  {
+    id: "T-103",
+    title: "Update signage in entrance",
+    priority: "low",
+    status: "done",
+  },
 ];
 
 let tickets = loadTickets();
@@ -93,6 +113,10 @@ function setupDropzones() {
         ticket.id === draggedTicketId ? { ...ticket, status } : ticket,
       );
     });
+
+    //save to localStorage and re-render UI after drop
+    saveTickets();
+    render();
 
     // TODO:
     // - prevent default on dragover
