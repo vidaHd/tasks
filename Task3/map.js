@@ -8,7 +8,7 @@ const spotData = [
   { id: "P-07", status: "available", monthlyFee: 86 },
   { id: "P-08", status: "occupied", monthlyFee: 91 },
   { id: "P-09", status: "available", monthlyFee: 89 },
-  { id: "P-10", status: "available", monthlyFee: 87 }
+  { id: "P-10", status: "available", monthlyFee: 87 },
 ];
 
 const selectedIds = new Set();
@@ -40,6 +40,8 @@ function handleSpotClick(spot) {
       errorMsg.textContent = "";
     }
   }
+  render();
+  updateSummary();
   // TODO:
   // - ignore occupied spots
   // - toggle selection for available spots
