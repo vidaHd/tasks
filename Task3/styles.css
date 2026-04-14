@@ -42,6 +42,27 @@ h1 {
   font-size: 12px;
 }
 
+/* available = white */
+.chip.available {
+  background: #fff;
+  color: #0f172a;
+  border-color: #e2e8f0;
+}
+
+/* occupied = gray */
+.chip.occupied {
+  background: #f1f5f9;
+  color: #64748b;
+  border-color: #cbd5e1;
+}
+
+/* selected = green */
+.chip.selected {
+  background: #dcfce7;
+  color: #166534;
+  border-color: #22c55e;
+}
+
 .summary {
   margin-bottom: 8px;
   color: #334155;
