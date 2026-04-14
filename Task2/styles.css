@@ -36,10 +36,11 @@ h1 {
 
 .column {
   border: 1px solid #d1d5db;
-  border-radius: 10px;
+  border-radius: 12px;
   background: #ffffff;
   min-height: 420px;
   overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
 .column > header {
@@ -55,12 +56,34 @@ h1 {
 }
 
 .ticket {
-  border: 1px solid #d1d5db;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 10px;
   margin-bottom: 10px;
   background: #fff;
+  cursor: grab;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow:
+    0px 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
+.ticket:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e5e7eb4a;
+}
+.ticket:active {
+  cursor: grabbing;
+  opacity: 0.6;
+}
+.dropzone.drag-over {
+  background-color: #e0f2fe;
+  border: 2px dashed #60a5fa;
+  transition:
+    background 0.2s ease,
+    border 0.2s ease;
+}
 /* TODO: improve ticket/card style and add stronger interaction states */
 /* TODO: add visible dropzone highlight while drag is over it */
