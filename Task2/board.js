@@ -47,6 +47,13 @@ function render() {
 
     // TODO: implement dragstart/dragend handlers and set draggedTicketId
 
+    el.addEventListener("dragstart", () => {
+      draggedTicketId = ticket.id;
+    });
+    el.addEventListener("dragend", () => {
+      draggedTicketId = null;
+    });
+
     if (ticket.status === "todo") todoCol.appendChild(el);
     else if (ticket.status === "inprogress") inprogressCol.appendChild(el);
     else doneCol.appendChild(el);
@@ -57,13 +64,13 @@ function render() {
 
 function updateCounts() {
   document.getElementById("count-todo").textContent = String(
-    tickets.filter((t) => t.status === "todo").length
+    tickets.filter((t) => t.status === "todo").length,
   );
   document.getElementById("count-inprogress").textContent = String(
-    tickets.filter((t) => t.status === "inprogress").length
+    tickets.filter((t) => t.status === "inprogress").length,
   );
   document.getElementById("count-done").textContent = String(
-    tickets.filter((t) => t.status === "done").length
+    tickets.filter((t) => t.status === "done").length,
   );
 }
 
@@ -71,6 +78,21 @@ function setupDropzones() {
   const zones = document.querySelectorAll(".dropzone");
   zones.forEach((zone) => {
     const status = zone.id.replace("col-", "");
+
+    zone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      zone.classList.add("drag-over");
+    });
+    zone.addEventListener("dragleave", () => {
+      zone.classList.remove("drag-over");
+    });
+    zone.addEventListener("drop", () => {
+      zone.classList.remove("drag-over");
+      if (!draggedTicketId) return;
+      tickets = tickets.map((ticket) =>
+        ticket.id === draggedTicketId ? { ...ticket, status } : ticket,
+      );
+    });
 
     // TODO:
     // - prevent default on dragover
