@@ -25,6 +25,23 @@ function updateSummary() {
 }
 
 function handleSpotClick(spot) {
+  if (spot.status === "occupied") return;
+
+  if (spot.status === "available") {
+    if (selectedIds.has(spot.id)) {
+      selectedIds.delete(spot.id);
+      errorMsg.textContent = "";
+    } else {
+      if (selectedIds.size >= 3) {
+        errorMsg.textContent = "You can select a maximum of 3 parking spots";
+        return;
+      }
+      selectedIds.add(spot.id);
+      errorMsg.textContent = "";
+    }
+  }
+  render();
+  updateSummary();
   // TODO:
   // - ignore occupied spots
   // - toggle selection for available spots
