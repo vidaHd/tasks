@@ -40,8 +40,6 @@ function handleSpotClick(spot) {
       errorMsg.textContent = "";
     }
   }
-  render();
-  updateSummary();
   // TODO:
   // - ignore occupied spots
   // - toggle selection for available spots
